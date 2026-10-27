@@ -10,7 +10,7 @@ router.get("/:id/categoria", produtoController.produtoCategoria);
 router.get("/:id", produtoController.buscarProdutosPorId);
 
 router.post("/", produtoController.criarProdutos);
-router.put("/:id", produtoController.editarProdutos);
+router.patch("/:id", produtoController.editarProdutos);
 router.delete("/:id", produtoController.excluirProdutos);
 
 

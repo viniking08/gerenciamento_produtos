@@ -78,12 +78,12 @@ const editarProdutos = async (req, res) => {
 
         const produtoEditado = await produtoModel.editar(
             id,
-            req.body.nome,
-            req.body.descricao,
-            req.body.preco,
-            req.body.id_categoria,
-            req.body.qntd_produtos,
-            req.body.qntd_minima
+            req.body.nome || produto.nome,
+            req.body.descricao || produto.descricao,
+            req.body.preco || produto.preco,
+            req.body.id_categoria || produto.id_categoria,
+            req.body.qntd_produtos || produto.qntd_produtos,
+            req.body.qntd_minima || produto.qntd_minima
         );
         
         if (req.body.qntd_produtos < 0 || req.body.qntd_produtos < 0) {
@@ -101,7 +101,7 @@ const editarProdutos = async (req, res) => {
         res.json(produtoEditado);
     } catch (error) {
         res.status(500).json({
-            mensagem: "Erro ao editar o produto, todas informações devem ser preenchidas", // faltou o patch
+            mensagem: "Erro ao editar o produto",
             erro: error.message
         });
     }
